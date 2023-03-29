@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robot 3D</title>
+  <!-- Import the component -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="demo">
+    <!-- Use it like any other HTML element -->
+    <model-viewer id="model" src="RobotExpressive.glb" camera-controls skybox-image="stadium_01_4k.hdr"
+      animation-name="Running" autoplay ar ar-modes="webxr scene-viewer quick-look" shadow-intensity="3">
+    </model-viewer>
+    <!-- <model-viewer alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum" src="RobotExpressive.glb" ar ar-modes="webxr scene-viewer quick-look" environment-image="shared-assets/environments/moon_1k.hdr" poster="shared-assets/models/NeilArmstrong.webp" seamless-poster shadow-intensity="1" camera-controls></model-viewer> -->
+
+    <div class="btn-container">
+      <button type="button" onclick="run()">RUN</button>
+      <button type="button" onclick="stop()">STOP</button>
+      <button type="button" onclick="wave()">WAVE</button>
+    </div>
+  </div>
+
+  <script>
+    var modelViewer = document.getElementById("model");
+    function run() {
+      modelViewer.animationName = "Running";
+    }
+
+    function stop() {
+      modelViewer.animationName = "none";
+    }
+
+    function wave() {
+      modelViewer.animationName = "Wave";
+    }
+
+    // const modelViewer1 = document.querySelector("model-viewer");
+    // console.log(modelViewer1.availableAnimations);
+    // console.log(modelViewer1.animations);
+    const modelViewer1 = document.querySelector("model-viewer");
+    modelViewer1.addEventListener("load", () => {
+      const names = modelViewer1.availableAnimations;
+      console.log(names);
+    });
+  </script>
+</body>
+
+</html>
